@@ -19,7 +19,7 @@ resource "aws_instance" "instance" {
 
     inline = [
       "rm -rf roboshop-shell",
-      "git clone https://github.com/TechlabRS/myrepo",
+      "git clone https://github.com/https://github.com/TechlabRS/myrepo",
       "cd myrepo",
       "sudo bash ${each.value["name"]}.sh"
     ]
@@ -35,3 +35,4 @@ resource "aws_route53_record" "records" {
   ttl      = 30
   records  = [aws_instance.instance[each.value["name"]].private_ip]
 }
+
