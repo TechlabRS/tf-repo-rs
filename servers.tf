@@ -19,8 +19,8 @@ resource "aws_instance" "instance" {
 
     inline = [
       "rm -rf myrepo",
-      "git clone https://github.com/TechlabRS/myrepo",
-      "cd myrepo",
+      "git clone https://github.com/TechlabRS/pro-roboshop-shell-rs",
+      "cd pro-roboshop-shell-rs",
       "sudo bash ${each.value["name"]}.sh"
     ]
   }
@@ -30,7 +30,7 @@ resource "aws_instance" "instance" {
 resource "aws_route53_record" "records" {
   for_each = var.components
   zone_id  = "Z016684615KU8Y3P3A8M9"
-  name     = "${each.value["name"]}-dev.uknowme.tech"
+  name     = "dev-${each.value["name"]}.uknowme.tech"
   type     = "A"
   ttl      = 30
   records  = [aws_instance.instance[each.value["name"]].private_ip]
