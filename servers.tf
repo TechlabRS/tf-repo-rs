@@ -18,8 +18,8 @@ resource "aws_instance" "instance" {
     }
 
     inline = [
-      "rm -rf roboshop-shell",
-      "git clone https://github.com/https://github.com/TechlabRS/myrepo",
+      "rm -rf myrepo",
+      "git clone https://github.com/TechlabRS/myrepo",
       "cd myrepo",
       "sudo bash ${each.value["name"]}.sh"
     ]
